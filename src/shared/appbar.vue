@@ -1,9 +1,13 @@
+<style>
+.v-toolbar-title{
+    text-align: -webkit-center;
+}
+</style>
 <template>
 	<v-app-bar>
 		<v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-		<v-toolbar-title>{{title}}</v-toolbar-title>
+		<v-toolbar-title>{{applicationName}}</v-toolbar-title>
 	</v-app-bar>
-
 	<v-navigation-drawer v-model="drawer" temporary>
 		<v-list>
 				<div v-for="item in redirectitems">
@@ -18,10 +22,15 @@ export default {
 	name: 'AppBar',
 	data: () => ({
 		drawer: false,
+        applicationName: null,
 		redirectitems: [
-			{title: 'Accueil', icon: 'mdi-home', path: "/"}
+			{title: 'Accueil', icon: 'mdi-home', path: "/"},
+            {title: 'test', icon: 'mdi-phone', path: "/test"}
 		],
 	}),
+    created(){
+        this.applicationName = process.env.VUE_APP_APPLICATION_NAME
+    },
 	methods: {
 		redirect(path) {
 			this.$router.push(path)

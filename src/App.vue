@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <v-main>
-    <AppBar />
+     <AppBar /><!-- Ajoute l'appbar en haut de l'écran sur chaque page -->
     <router-view />
   </v-main>
 </v-app>
@@ -24,9 +24,11 @@ export default {
         }
       },
   },
-  data: () => ({}),
+  data: () => ({
+    applicationName: null
+  }),
   components: {
     AppBar
-  }
+  },
 }
 </script>
